@@ -1,17 +1,12 @@
 fileFormatVersion: 2
-guid: fbc25a60e26fc424da9c0396bd1432c3
+guid: e008c4c536bb3f94daec689267570c71
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: rocky_blender2
-    second: {instanceID: 0}
+  externalObjects: {}
   materials:
-    materialImportMode: 2
-    materialName: 2
+    materialImportMode: 1
+    materialName: 0
     materialSearch: 1
     materialLocation: 1
   animations:
