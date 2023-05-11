@@ -8,7 +8,13 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private Rigidbody _pinataRB;
     [SerializeField]
+    private List<Vector3> _rotations;
+    [SerializeField]
+    private Transform _pinataTransform;
+    [SerializeField]
     private float _hitMultiplayer;
+    [SerializeField]
+    private float _maxRotation;
     [SerializeField]
     private GameObject _hole1;
     [SerializeField]
@@ -27,6 +33,7 @@ public class Pinata : MonoBehaviour
 
 
     private int _hitCount;
+    private bool _pinataDroped;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +48,7 @@ public class Pinata : MonoBehaviour
 
     private void OnMouseDown()
     {
+       
         Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(inputRay, out hit))
@@ -56,19 +64,26 @@ public class Pinata : MonoBehaviour
 
     private void OnHit(Vector3 point)
     {
-        _pinataRB.AddForce(point);
-        var randomForce = Random.Range(0, 2);
-        Debug.LogError(randomForce);
-        if(randomForce < 0.5)
+        //_pinataRB.AddForceAtPosition(point);
+        var randomRotation = Random.Range(0, _rotations.Count);
+        _pinataTransform.eulerAngles = _rotations[randomRotation];
+        var currentRotation = _pinataTransform.rotation.eulerAngles.y;
+        //_pinataRB.AddForce(Vector3.up *_hitMultiplayer);
+       /* if (Mathf.Abs(currentRotation) < _maxRotation)
         {
-            _pinataRB.AddForce(Vector3.right * _hitMultiplayer);
+            _pinataTransform.Rotate(Vector3.up, randomRotation);
+        }
+        else if (currentRotation > _maxRotation)
+        {
+            _pinataTransform.Rotate(Vector3.up, -_maxRotation/2);
         } 
         else
         {
-            _pinataRB.AddForce(Vector3.left * _hitMultiplayer);
-        }
-        _hitCount++;
-        if(_hitCount > 5)
+            _pinataTransform.Rotate(Vector3.up, _maxRotation / 2);
+        }*/
+
+
+        if (_hitCount > 5)
         {
             _hole1.SetActive(true);
         }
@@ -80,5 +95,7 @@ public class Pinata : MonoBehaviour
         {
             _hole3.SetActive(true);
         }
+        _hitCount++;
+
     }
 }
