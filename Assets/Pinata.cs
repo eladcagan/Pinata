@@ -14,7 +14,11 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private float _hitMultiplayer;
     [SerializeField]
-    private float _maxRotation;
+    private float _scaleDuration;
+    [SerializeField]
+    private Vector3 _targetSize;
+    [SerializeField]
+    private float _maxHits;
     [SerializeField]
     private GameObject _hole1;
     [SerializeField]
@@ -33,22 +37,31 @@ public class Pinata : MonoBehaviour
 
 
     private int _hitCount;
-    private bool _pinataDroped;
+    private bool _isScaling;
+    private int _randomRotation;
+    private Vector3 _initialSize;
+    private Vector3 _currentSize;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _initialSize = _pinataTransform.localScale;
+        _currentSize = _initialSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        var currentAngle = _pinataTransform.rotation.eulerAngles;
+        currentAngle = new Vector3(
+            Mathf.LerpAngle(currentAngle.x, _rotations[_randomRotation].x, Time.deltaTime * _hitMultiplayer),
+            Mathf.LerpAngle(currentAngle.y, _rotations[_randomRotation].y, Time.deltaTime * _hitMultiplayer),
+            Mathf.LerpAngle(currentAngle.z, _rotations[_randomRotation].z, Time.deltaTime * _hitMultiplayer));
+
+        transform.eulerAngles = currentAngle;
     }
 
     private void OnMouseDown()
     {
-       
         Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(inputRay, out hit))
@@ -64,38 +77,50 @@ public class Pinata : MonoBehaviour
 
     private void OnHit(Vector3 point)
     {
-        //_pinataRB.AddForceAtPosition(point);
-        var randomRotation = Random.Range(0, _rotations.Count);
-        _pinataTransform.eulerAngles = _rotations[randomRotation];
-        var currentRotation = _pinataTransform.rotation.eulerAngles.y;
-        //_pinataRB.AddForce(Vector3.up *_hitMultiplayer);
-       /* if (Mathf.Abs(currentRotation) < _maxRotation)
+        _randomRotation = Random.Range(0, _rotations.Count);
+
+        if (!_isScaling)
         {
-            _pinataTransform.Rotate(Vector3.up, randomRotation);
+            StartCoroutine(HitScaleDown());
         }
-        else if (currentRotation > _maxRotation)
-        {
-            _pinataTransform.Rotate(Vector3.up, -_maxRotation/2);
-        } 
-        else
-        {
-            _pinataTransform.Rotate(Vector3.up, _maxRotation / 2);
-        }*/
 
-
-        if (_hitCount > 5)
+        if (_hitCount > _maxHits/3)
         {
             _hole1.SetActive(true);
         }
-        if (_hitCount > 10)
+        if (_hitCount > 2*_maxHits/3)
         {
             _hole2.SetActive(true);
         }
-        if (_hitCount > 15)
+        if (_hitCount == _maxHits)
         {
             _hole3.SetActive(true);
         }
         _hitCount++;
+    }
+    private bool CompareVectors(Vector3 lhs, Vector3 rhs)
+    {
+        return Vector3.SqrMagnitude(lhs - rhs) < 9.99999944E-11f;
+    }
+
+    private IEnumerator HitScaleDown()
+    {
+        _isScaling = true;
+        var initialScale = transform.localScale;
+
+        for (float time = 0; time < _scaleDuration * 2; time += Time.deltaTime)
+        {
+            float progress = Mathf.PingPong(time, _scaleDuration) / _scaleDuration;
+            transform.localScale = Vector3.Lerp(initialScale, _targetSize, progress);
+            yield return null;
+        }
+        transform.localScale = initialScale;
+        _isScaling = false;
+    }
+
+    private IEnumerator HitScaleUp()
+    {
+            yield return null;
 
     }
 }
