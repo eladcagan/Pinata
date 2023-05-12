@@ -12,7 +12,9 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private Transform _pinataTransform;
     [SerializeField]
-    private float _hitMultiplayer;
+    private float _hitRotationMultiplayer;
+    [SerializeField]
+    private float _hitDirectionMultiplayer;
     [SerializeField]
     private float _scaleDuration;
     [SerializeField]
@@ -39,13 +41,9 @@ public class Pinata : MonoBehaviour
     private int _hitCount;
     private bool _isScaling;
     private int _randomRotation;
-    private Vector3 _initialSize;
-    private Vector3 _currentSize;
     // Start is called before the first frame update
     void Start()
     {
-        _initialSize = _pinataTransform.localScale;
-        _currentSize = _initialSize;
     }
 
     // Update is called once per frame
@@ -53,9 +51,9 @@ public class Pinata : MonoBehaviour
     {
         var currentAngle = _pinataTransform.rotation.eulerAngles;
         currentAngle = new Vector3(
-            Mathf.LerpAngle(currentAngle.x, _rotations[_randomRotation].x, Time.deltaTime * _hitMultiplayer),
-            Mathf.LerpAngle(currentAngle.y, _rotations[_randomRotation].y, Time.deltaTime * _hitMultiplayer),
-            Mathf.LerpAngle(currentAngle.z, _rotations[_randomRotation].z, Time.deltaTime * _hitMultiplayer));
+            Mathf.LerpAngle(currentAngle.x, _rotations[_randomRotation].x, Time.deltaTime * _hitRotationMultiplayer),
+            Mathf.LerpAngle(currentAngle.y, _rotations[_randomRotation].y, Time.deltaTime * _hitRotationMultiplayer),
+            Mathf.LerpAngle(currentAngle.z, _rotations[_randomRotation].z, Time.deltaTime * _hitRotationMultiplayer));
 
         transform.eulerAngles = currentAngle;
     }
@@ -69,7 +67,7 @@ public class Pinata : MonoBehaviour
             //MeshDeformer deformer = hit.collider.GetComponent<MeshDeformer>();
 
             Vector3 point = hit.point;
-            point += -hit.normal * _hitMultiplayer;
+            point += -hit.normal * _hitRotationMultiplayer;
             //deformer.AddDeformingForce(point, force);
             OnHit(point);
         }
@@ -78,13 +76,17 @@ public class Pinata : MonoBehaviour
     private void OnHit(Vector3 point)
     {
         _randomRotation = Random.Range(0, _rotations.Count);
-
+        var randomForceDirection = Random.Range(0, 2);
         if (!_isScaling)
         {
+            var randomDirectrion = randomForceDirection > 0.5 ? Vector3.left : Vector3.right;
+            _pinataRB.AddForceAtPosition(Vector3.up * _hitDirectionMultiplayer, point);
+            _pinataRB.AddForceAtPosition(randomDirectrion * _hitDirectionMultiplayer    , point);
+
             StartCoroutine(HitScaleDown());
         }
 
-        if (_hitCount > _maxHits/3)
+    /*    if (_hitCount > _maxHits/3)
         {
             _hole1.SetActive(true);
         }
@@ -95,12 +97,8 @@ public class Pinata : MonoBehaviour
         if (_hitCount == _maxHits)
         {
             _hole3.SetActive(true);
-        }
+        }*/
         _hitCount++;
-    }
-    private bool CompareVectors(Vector3 lhs, Vector3 rhs)
-    {
-        return Vector3.SqrMagnitude(lhs - rhs) < 9.99999944E-11f;
     }
 
     private IEnumerator HitScaleDown()
