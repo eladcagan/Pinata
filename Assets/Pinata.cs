@@ -8,6 +8,8 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private Rigidbody _pinataRB;
     [SerializeField]
+    private ParticleSystem _pinataPS;
+    [SerializeField]
     private List<Vector3> _rotations;
     [SerializeField]
     private Transform _pinataTransform;
@@ -66,15 +68,17 @@ public class Pinata : MonoBehaviour
         {
             //MeshDeformer deformer = hit.collider.GetComponent<MeshDeformer>();
 
-            Vector3 point = hit.point;
+            var point = hit.point;
+            var origPoint = hit.point;
             point += -hit.normal * _hitRotationMultiplayer;
             //deformer.AddDeformingForce(point, force);
-            OnHit(point);
+            OnHit(point, origPoint);
         }
     }
 
-    private void OnHit(Vector3 point)
+    private void OnHit(Vector3 point, Vector3 origPoint)
     {
+        Instantiate(_pinataPS, origPoint, Quaternion.identity);
         _randomRotation = Random.Range(0, _rotations.Count);
         var randomForceDirection = Random.Range(0, 2);
         if (!_isScaling)
