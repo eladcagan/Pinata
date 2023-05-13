@@ -1,11 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using MarchingBytes;
 using UnityEngine;
 
 public class Pinata : MonoBehaviour
 {
-
+    [Header("Variables")]
+    [SerializeField]
+    private float _explosionForce;
+    [SerializeField]
+    private float _explosionRadius;
+    [SerializeField]
+    private float _hitRotationMultiplayer;
+    [SerializeField]
+    private float _hitDirectionMultiplayer;
+    [SerializeField]
+    private float _scaleDuration;
+    [SerializeField]
+    private Vector3 _targetSize;
+    [SerializeField]
+    private float _maxHits;
+    [Header("References")]
     [SerializeField]
     private Rigidbody _pinataRB;
     [SerializeField]
@@ -17,23 +33,11 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private GameObject _pinataHitPool;
     [SerializeField]
+    private GameObject _pinataExplosion;
+    [SerializeField]
     private List<Vector3> _rotations;
     [SerializeField]
     private Transform _pinataTransform;
-    [SerializeField]
-    private float _explosionForce;
-    [SerializeField]
-    private float _explosionRadius;
-    [SerializeField]
-    private float _hitRotationMultiplayer; 
-    [SerializeField]
-    private float _hitDirectionMultiplayer;
-    [SerializeField]
-    private float _scaleDuration;
-    [SerializeField]
-    private Vector3 _targetSize;
-    [SerializeField]
-    private float _maxHits;
     [SerializeField]
     private List<AudioClip> _hitSfx;
     [SerializeField]
@@ -44,12 +48,14 @@ public class Pinata : MonoBehaviour
     private AudioSource _source;
 
 
+    public event Action PinataExploaded;
+
 
     private int _hitCount;
     private bool _isScaling;
     private int _randomRotation;
     private GameObject _hitPS;
-   
+
 
     // Update is called once per frame
     void Update()
@@ -83,8 +89,8 @@ public class Pinata : MonoBehaviour
     {
         origPoint.z = origPoint.z - .001f;
         _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
-        _randomRotation = Random.Range(0, _rotations.Count);
-        var randomForceDirection = Random.Range(0, 2);
+        _randomRotation = UnityEngine.Random.Range(0, _rotations.Count);
+        var randomForceDirection = UnityEngine.Random.Range(0, 2);
         if (!_isScaling)
         {
             var randomDirectrion = randomForceDirection > 0.5 ? Vector3.left : Vector3.right;
@@ -104,13 +110,15 @@ public class Pinata : MonoBehaviour
         {
             _pinataMeshRendrer.enabled = false;
             _pinataFragmentsParent.SetActive(true);
-            foreach(Rigidbody rb in _pinataFragments)
+            _pinataExplosion.SetActive(true);
+            foreach (Rigidbody rb in _pinataFragments)
             {
                 rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
             }
-            //_hole3.SetActive(true);
-        }
-        _hitCount++;
+            PinataExploaded.Invoke();
+
+}
+_hitCount++;
     }
 
     private IEnumerator HitScaleDown()
