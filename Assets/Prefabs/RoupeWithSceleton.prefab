@@ -47,7 +47,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1589952327
 FixedJoint:
@@ -110,7 +110,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &492794687
 FixedJoint:
@@ -173,7 +173,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1694638007
 FixedJoint:
@@ -236,7 +236,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &2002542215
 FixedJoint:
@@ -299,7 +299,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &574911
 FixedJoint:
@@ -362,7 +362,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1467934010
 FixedJoint:
@@ -425,7 +425,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &2006427019
 FixedJoint:
@@ -487,7 +487,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &652331731
 FixedJoint:
@@ -550,7 +550,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1361318830
 FixedJoint:
@@ -613,7 +613,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1374706639
 FixedJoint:
@@ -676,7 +676,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1886419194
 FixedJoint:
@@ -739,7 +739,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &741443399
 FixedJoint:
@@ -802,7 +802,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &545332862
 FixedJoint:
@@ -865,7 +865,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &306237266
 FixedJoint:
@@ -928,7 +928,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &356432511
 FixedJoint:
@@ -991,7 +991,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &863895732
 FixedJoint:
@@ -1054,7 +1054,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &190179350
 FixedJoint:
@@ -1117,7 +1117,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1942346590
 FixedJoint:
@@ -1213,7 +1213,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1930788076
 FixedJoint:
@@ -1276,7 +1276,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &925384948
 FixedJoint:
@@ -1339,7 +1339,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &277464671
 FixedJoint:
@@ -1402,7 +1402,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1165014497
 FixedJoint:
@@ -1465,7 +1465,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &239241927
 FixedJoint:
@@ -1528,7 +1528,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &417354812
 FixedJoint:
@@ -1591,7 +1591,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &926099365
 FixedJoint:
@@ -1654,7 +1654,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &605354422
 FixedJoint:
@@ -1748,7 +1748,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &104794332
 FixedJoint:
@@ -1811,7 +1811,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1079503054
 FixedJoint:
@@ -1874,7 +1874,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &388852478
 FixedJoint:
@@ -1937,7 +1937,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &839993367
 FixedJoint:
@@ -2000,7 +2000,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &856885185
 FixedJoint:
@@ -2063,7 +2063,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &721697850
 FixedJoint:
@@ -2126,7 +2126,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1320090909
 FixedJoint:
@@ -2189,7 +2189,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &745666267
 FixedJoint:
@@ -2255,7 +2255,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c73272b91c9df0248a186f218fba0c28, type: 3}
+  - {fileID: 2100000, guid: fdcb1fb2aea962b4f85b1ef70a5f008d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2278,7 +2278,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: -8748540968582363795, guid: f1a8c8a7cb872b44989653b44681a738, type: 3}
   m_Bones:
@@ -2370,7 +2370,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!138 &1015796820
 FixedJoint:
@@ -2393,73 +2393,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3373952678958196852}
     m_Modifications:
-    - target: {fileID: 6158359497087707453, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6682232101720854152, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
       propertyPath: m_Name
       value: "pi\xF1ata"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.data[0].x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.data[0].y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.data[1].y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.data[2].x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.data[2].y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _rotations.Array.data[3].y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _pinataTransform
-      value: 
-      objectReference: {fileID: 582465808}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _hitMultiplayer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _scaleDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _targetSize.x
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _targetSize.y
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _targetSize.z
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854160, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: _maxRotation
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854161, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_Mass
-      value: 16.78
       objectReference: {fileID: 0}
     - target: {fileID: 6682232101720854162, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
       propertyPath: m_ConnectedBody
@@ -2507,26 +2443,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6682232101720854167, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854167, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854167, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682232101720854167, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401475341463000834, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444225841515964221, guid: d91ec52c778eac94291eac2a9b504dbd, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

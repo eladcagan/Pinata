@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MarchingBytes;
 using UnityEngine;
 
 public class Pinata : MonoBehaviour
@@ -8,13 +9,23 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private Rigidbody _pinataRB;
     [SerializeField]
-    private ParticleSystem _pinataPS;
+    private MeshRenderer _pinataMeshRendrer;
+    [SerializeField]
+    private GameObject _pinataFragmentsParent;
+    [SerializeField]
+    private List<Rigidbody> _pinataFragments;
+    [SerializeField]
+    private GameObject _pinataHitPool;
     [SerializeField]
     private List<Vector3> _rotations;
     [SerializeField]
     private Transform _pinataTransform;
     [SerializeField]
-    private float _hitRotationMultiplayer;
+    private float _explosionForce;
+    [SerializeField]
+    private float _explosionRadius;
+    [SerializeField]
+    private float _hitRotationMultiplayer; 
     [SerializeField]
     private float _hitDirectionMultiplayer;
     [SerializeField]
@@ -23,12 +34,6 @@ public class Pinata : MonoBehaviour
     private Vector3 _targetSize;
     [SerializeField]
     private float _maxHits;
-    [SerializeField]
-    private GameObject _hole1;
-    [SerializeField]
-    private GameObject _hole2;
-    [SerializeField]
-    private GameObject _hole3;
     [SerializeField]
     private List<AudioClip> _hitSfx;
     [SerializeField]
@@ -43,10 +48,8 @@ public class Pinata : MonoBehaviour
     private int _hitCount;
     private bool _isScaling;
     private int _randomRotation;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    private GameObject _hitPS;
+   
 
     // Update is called once per frame
     void Update()
@@ -78,7 +81,8 @@ public class Pinata : MonoBehaviour
 
     private void OnHit(Vector3 point, Vector3 origPoint)
     {
-        Instantiate(_pinataPS, origPoint, Quaternion.identity);
+        origPoint.z = origPoint.z - .001f;
+        _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
         _randomRotation = Random.Range(0, _rotations.Count);
         var randomForceDirection = Random.Range(0, 2);
         if (!_isScaling)
@@ -90,18 +94,22 @@ public class Pinata : MonoBehaviour
             StartCoroutine(HitScaleDown());
         }
 
-    /*    if (_hitCount > _maxHits/3)
+        if (_hitCount > _maxHits / 3)
         {
-            _hole1.SetActive(true);
         }
-        if (_hitCount > 2*_maxHits/3)
+        if (_hitCount > 2 * _maxHits / 3)
         {
-            _hole2.SetActive(true);
         }
         if (_hitCount == _maxHits)
         {
-            _hole3.SetActive(true);
-        }*/
+            _pinataMeshRendrer.enabled = false;
+            _pinataFragmentsParent.SetActive(true);
+            foreach(Rigidbody rb in _pinataFragments)
+            {
+                rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
+            }
+            //_hole3.SetActive(true);
+        }
         _hitCount++;
     }
 
@@ -118,11 +126,7 @@ public class Pinata : MonoBehaviour
         }
         transform.localScale = initialScale;
         _isScaling = false;
+        Destroy(_hitPS);
     }
 
-    private IEnumerator HitScaleUp()
-    {
-            yield return null;
-
-    }
 }
