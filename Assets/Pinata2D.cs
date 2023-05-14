@@ -1,51 +1,24 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using MarchingBytes;
 using UnityEngine;
+using System;
 
-public class Pinata : MonoBehaviour
+public class Pinata2D : MonoBehaviour
 {
+
     [Header("Variables")]
     [SerializeField]
-    private float _explosionForce;
-    [SerializeField]
-    private float _explosionRadius;
-    [SerializeField]
-    private float _hitRotationMultiplayer;
-    [SerializeField]
     private float _hitDirectionMultiplayer;
+    [SerializeField]
+    private float _maxHits;
     [SerializeField]
     private float _scaleDuration;
     [SerializeField]
     private Vector3 _targetSize;
-    [SerializeField]
-    private float _maxHits;
     [Header("References")]
     [SerializeField]
-    private Rigidbody _pinataRB;
-    [SerializeField]
-    private MeshRenderer _pinataMeshRendrer;
-    [SerializeField]
-    private GameObject _pinataFragmentsParent;
-    [SerializeField]
-    private List<Rigidbody> _pinataFragments;
-    [SerializeField]
-    private GameObject _pinataHitPool;
-    [SerializeField]
-    private GameObject _pinataExplosion;
-    [SerializeField]
-    private List<Vector3> _rotations;
-    [SerializeField]
-    private Transform _pinataTransform;
-    [SerializeField]
-    private List<AudioClip> _hitSfx;
-    [SerializeField]
-    private List<AudioClip> _pinataSfx;
-    [SerializeField]
-    private AudioClip _intro;
-    [SerializeField]
-    private AudioSource _source;
+    private Rigidbody2D _pinataRB;
+
 
 
     public event Action PinataExploaded;
@@ -55,41 +28,36 @@ public class Pinata : MonoBehaviour
     private bool _isScaling;
     private int _randomRotation;
     private GameObject _hitPS;
+    // Start is called before the first frame update
+    void Start()
+    {
 
+    }
 
     // Update is called once per frame
     void Update()
     {
-        var currentAngle = _pinataTransform.rotation.eulerAngles;
-        currentAngle = new Vector3(
-            Mathf.LerpAngle(currentAngle.x, _rotations[_randomRotation].x, Time.deltaTime * _hitRotationMultiplayer),
-            Mathf.LerpAngle(currentAngle.y, _rotations[_randomRotation].y, Time.deltaTime * _hitRotationMultiplayer),
-            Mathf.LerpAngle(currentAngle.z, _rotations[_randomRotation].z, Time.deltaTime * _hitRotationMultiplayer));
 
-        transform.eulerAngles = currentAngle;
     }
-
     private void OnMouseDown()
     {
-        Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(inputRay, out hit))
+        Debug.LogError("OnMouseDown");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+        if (hit.collider != null || hit.collider.transform == this.transform)
         {
             //MeshDeformer deformer = hit.collider.GetComponent<MeshDeformer>();
 
             var point = hit.point;
             var origPoint = hit.point;
-            point += -hit.normal * _hitRotationMultiplayer;
             //deformer.AddDeformingForce(point, force);
             OnHit(point, origPoint);
         }
     }
-
     private void OnHit(Vector3 point, Vector3 origPoint)
     {
+        Debug.LogError("OnHit");
         origPoint.z = origPoint.z - .001f;
-        _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
-        _randomRotation = UnityEngine.Random.Range(0, _rotations.Count);
         var randomForceDirection = UnityEngine.Random.Range(0, 2);
         if (!_isScaling)
         {
@@ -108,14 +76,14 @@ public class Pinata : MonoBehaviour
         }
         if (_hitCount == _maxHits)
         {
-            _pinataMeshRendrer.enabled = false;
+           /* _pinataMeshRendrer.enabled = false;
             _pinataFragmentsParent.SetActive(true);
             _pinataExplosion.SetActive(true);
             foreach (Rigidbody rb in _pinataFragments)
             {
                 rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
             }
-            PinataExploaded.Invoke();
+            PinataExploaded.Invoke();*/
 
         }
         _hitCount++;
@@ -136,5 +104,4 @@ public class Pinata : MonoBehaviour
         _isScaling = false;
         Destroy(_hitPS);
     }
-
 }
