@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Pinata : MonoBehaviour
 {
-    [Header("Variables")]
+    [Header("Configurations")]
     [SerializeField]
     private float _explosionForce;
     [SerializeField]
@@ -75,12 +75,9 @@ public class Pinata : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(inputRay, out hit))
         {
-            //MeshDeformer deformer = hit.collider.GetComponent<MeshDeformer>();
-
             var point = hit.point;
             var origPoint = hit.point;
             point += -hit.normal * _hitRotationMultiplayer;
-            //deformer.AddDeformingForce(point, force);
             OnHit(point, origPoint);
         }
     }

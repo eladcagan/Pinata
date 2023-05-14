@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MarchingBytes;
+
 
 public class Pinata2D : MonoBehaviour
 {
 
-    [Header("Variables")]
+    [Header("Configurations")]
     [SerializeField]
     private float _hitDirectionMultiplayer;
     [SerializeField]
@@ -18,6 +20,14 @@ public class Pinata2D : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private Rigidbody2D _pinataRB;
+    [SerializeField]
+    private GameObject _pinataIdle;
+    [SerializeField]
+    private GameObject _pinataHit;
+    [SerializeField]
+    private GameObject _pinataOpen;
+    [SerializeField]
+    private List<GameObject> _pinataParts;
 
 
 
@@ -41,23 +51,19 @@ public class Pinata2D : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.LogError("OnMouseDown");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
         if (hit.collider != null || hit.collider.transform == this.transform)
         {
-            //MeshDeformer deformer = hit.collider.GetComponent<MeshDeformer>();
-
             var point = hit.point;
             var origPoint = hit.point;
-            //deformer.AddDeformingForce(point, force);
             OnHit(point, origPoint);
         }
     }
     private void OnHit(Vector3 point, Vector3 origPoint)
     {
-        Debug.LogError("OnHit");
-        origPoint.z = origPoint.z - .001f;
+        origPoint.z = origPoint.x - 1f;
+        _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
         var randomForceDirection = UnityEngine.Random.Range(0, 2);
         if (!_isScaling)
         {
@@ -70,20 +76,29 @@ public class Pinata2D : MonoBehaviour
 
         if (_hitCount > _maxHits / 3)
         {
+            _pinataIdle.SetActive(true);
+            _pinataHit.SetActive(false);
+            _pinataOpen.SetActive(false);
         }
         if (_hitCount > 2 * _maxHits / 3)
         {
+            _pinataIdle.SetActive(false);
+            _pinataHit.SetActive(false);
+            _pinataOpen.SetActive(true);
         }
-        if (_hitCount == _maxHits)
+        if (_hitCount >= _maxHits)
         {
-           /* _pinataMeshRendrer.enabled = false;
-            _pinataFragmentsParent.SetActive(true);
-            _pinataExplosion.SetActive(true);
-            foreach (Rigidbody rb in _pinataFragments)
-            {
-                rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
-            }
-            PinataExploaded.Invoke();*/
+            _pinataIdle.SetActive(false);
+            _pinataHit.SetActive(true);
+            _pinataOpen.SetActive(false);
+            /* _pinataMeshRendrer.enabled = false;
+             _pinataFragmentsParent.SetActive(true);
+             _pinataExplosion.SetActive(true);
+             foreach (Rigidbody rb in _pinataFragments)
+             {
+                 rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
+             }
+             PinataExploaded.Invoke();*/
 
         }
         _hitCount++;
