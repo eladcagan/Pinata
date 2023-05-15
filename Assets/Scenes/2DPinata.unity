@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolInfo:
   - poolName: PinataHitPool
-    prefab: {fileID: 8299092672830994027, guid: cb856f3a4021ad84abe99a00c10580a1, type: 3}
+    prefab: {fileID: 700582750469260271, guid: c8e6a6a39ded277489450040e460f464, type: 3}
     poolSize: 10
     fixedSize: 0
 --- !u!1001 &3013846643220206377
@@ -2223,6 +2223,10 @@ PrefabInstance:
     - target: {fileID: 4857564975198786008, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
       propertyPath: m_Name
       value: PlayAgain
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857564975198786008, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4857564975198786009, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
       propertyPath: m_LocalPosition.x

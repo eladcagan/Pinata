@@ -1495,7 +1495,7 @@ PrefabInstance:
     - target: {fileID: 1393428431340648089, guid: 700009f02858b8743875a919f6a64b43, type: 3}
       propertyPath: poolInfo.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 8299092672830994027, guid: d4c1a310603ec3c49be744448da5fc98, type: 3}
+      objectReference: {fileID: 700582750469260271, guid: 8cbbc3a0365f91041b30c295a18c8626, type: 3}
     - target: {fileID: 1393428431340648089, guid: 700009f02858b8743875a919f6a64b43, type: 3}
       propertyPath: poolInfo.Array.data[0].poolName
       value: PinataHitPool
