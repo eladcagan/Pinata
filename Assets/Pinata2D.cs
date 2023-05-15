@@ -76,8 +76,8 @@ public class Pinata2D : MonoBehaviour
         if (!_isScaling)
         {
             var randomDirectrion = randomForceDirection > 0.5 ? Vector3.left : Vector3.right;
-           /* _pinataRB.AddForceAtPosition(Vector3.up * _hitDirectionMultiplayer, point);
-            _pinataRB.AddForceAtPosition(randomDirectrion * _hitDirectionMultiplayer, point);*/
+            _pinataRB.AddForceAtPosition(Vector3.up * _hitDirectionMultiplayer, point);
+            _pinataRB.AddForceAtPosition(randomDirectrion * _hitDirectionMultiplayer, point);
 
             StartCoroutine(HitScaleDown());
         }

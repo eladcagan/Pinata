@@ -112,8 +112,7 @@ public class Pinata : MonoBehaviour
             {
                 rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
             }
-            PinataExploaded.Invoke();
-
+            StartCoroutine(OnPinataExploded(3));
         }
         _hitCount++;
     }
@@ -132,6 +131,12 @@ public class Pinata : MonoBehaviour
         transform.localScale = initialScale;
         _isScaling = false;
         Destroy(_hitPS);
+    }
+
+    private IEnumerator OnPinataExploded(float delayInSecond)
+    {
+        yield return new WaitForSeconds(delayInSecond);
+        PinataExploaded.Invoke();
     }
 
 }
