@@ -135,8 +135,8 @@ public class Pinata : MonoBehaviour
 
     private IEnumerator OnPinataExploded(float delayInSecond)
     {
-        yield return new WaitForSeconds(delayInSecond);
         PinataExploaded.Invoke();
+        yield return new WaitForSeconds(delayInSecond);
     }
 
 }

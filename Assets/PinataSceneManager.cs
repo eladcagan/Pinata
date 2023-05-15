@@ -12,8 +12,8 @@ public class PinataSceneManager : MonoBehaviour
     private GameObject _playAgainButton;
 
 
-
     private Pinata _pinataInstance;
+    private GameObject _pinata;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,15 +22,15 @@ public class PinataSceneManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        DestroyPinata();
         _pinataInstance.gameObject.SetActive(false);
+        DestroyPinata();
         CreatePinata();
     }
 
     private void CreatePinata()
     {
-        var pinata = Instantiate(_pinataPrefab, _pinataParent);
-        _pinataInstance = pinata.GetComponentInChildren<Pinata>();
+        _pinata = Instantiate(_pinataPrefab, _pinataParent);
+        _pinataInstance = _pinata.GetComponentInChildren<Pinata>();
         _pinataInstance.PinataExploaded += OnPinataExploaded;
     }
 
@@ -42,6 +42,6 @@ public class PinataSceneManager : MonoBehaviour
     private void DestroyPinata()
     {
         _pinataInstance.PinataExploaded -= OnPinataExploaded;
-        Destroy(_pinataInstance);
+        DestroyImmediate(_pinata);
     }
 }
