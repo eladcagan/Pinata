@@ -1273,18 +1273,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1149750277}
     - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Pinata2DSceneManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1294,6 +1282,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857564975198786010, guid: 98b2e4c19de8c2c478d09e5d5afc6e3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
