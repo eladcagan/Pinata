@@ -138,5 +138,4 @@ public class Pinata : MonoBehaviour
         PinataExploaded.Invoke();
         yield return new WaitForSeconds(delayInSecond);
     }
-
 }

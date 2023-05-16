@@ -41,7 +41,6 @@ public class Pinata2D : MonoBehaviour
 
     public event Action PinataExploaded;
 
-
     private int _hitCount;
     private bool _isScaling;
     private int _randomRotation;
@@ -84,14 +83,14 @@ public class Pinata2D : MonoBehaviour
 
         if (_hitCount > _maxHits / 3 && _hitCount <= 2 * _maxHits / 3)
         {
-            _pinataFirstExplosion.SetActive(true);
+            //_pinataFirstExplosion.SetActive(true);
             _pinataIdle.SetActive(false);
             _pinataOpen.SetActive(true);
             _pinataHit.SetActive(false);
         }
         if (_hitCount > 2 * _maxHits / 3 && _hitCount < _maxHits)
         {
-            _pinataSecondExplosion.SetActive(true);
+           // _pinataSecondExplosion.SetActive(true);
             _pinataIdle.SetActive(false);
             _pinataOpen.SetActive(false);
             _pinataHit.SetActive(true);
@@ -102,7 +101,7 @@ public class Pinata2D : MonoBehaviour
             _pinataIdle.SetActive(false);
             _pinataOpen.SetActive(false);
             _pinataHit.SetActive(false);
-            _pinataFinalExplosion.SetActive(true);
+        //    _pinataFinalExplosion.SetActive(true);
             for (var i = 0; i < _pinataParts.Count; i++)
             {
                 _pinataParts[i].gameObject.SetActive(true);
@@ -121,9 +120,9 @@ public class Pinata2D : MonoBehaviour
                         break;
                 }
             }
-               
-               
-            //PinataExploaded.Invoke();
+
+
+            StartCoroutine(OnPinataExploded(3));
 
         }
         _hitCount++;
@@ -144,9 +143,9 @@ public class Pinata2D : MonoBehaviour
         _isScaling = false;
         Destroy(_hitPS);
     }
-
-    private IEnumerator DelayInSecond(float delayInSecond)
+    private IEnumerator OnPinataExploded(float delayInSecond)
     {
+        PinataExploaded.Invoke();
         yield return new WaitForSeconds(delayInSecond);
     }
 }
