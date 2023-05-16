@@ -12,7 +12,7 @@ public class Pinata2D : MonoBehaviour
     [SerializeField]
     private float _hitDirectionMultiplayer;
     [SerializeField]
-    private float _maxHits;
+    private int _maxHits;
     [SerializeField]
     private float _scaleDuration;
     [SerializeField]
@@ -36,7 +36,14 @@ public class Pinata2D : MonoBehaviour
     private GameObject _pinataSecondExplosion;
     [SerializeField]
     private GameObject _pinataFinalExplosion;
-
+    [SerializeField]
+    private List<AudioClip> _hitSfx;
+    [SerializeField]
+    private List<AudioClip> _pinataSfx;
+    [SerializeField]
+    private AudioClip _intro;
+    [SerializeField]
+    private AudioSource _source;
 
 
     public event Action PinataExploaded;
@@ -45,17 +52,8 @@ public class Pinata2D : MonoBehaviour
     private bool _isScaling;
     private int _randomRotation;
     private GameObject _hitPS;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnMouseDown()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -70,6 +68,7 @@ public class Pinata2D : MonoBehaviour
     private void OnHit(Vector3 point, Vector3 origPoint)
     {
         origPoint.z = origPoint.x - 1f;
+        PlayRandomHitSound();
         _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
         var randomForceDirection = UnityEngine.Random.Range(0, 2);
         if (!_isScaling)
@@ -81,23 +80,26 @@ public class Pinata2D : MonoBehaviour
             StartCoroutine(HitScaleDown());
         }
 
-        if (_hitCount > _maxHits / 3 && _hitCount <= 2 * _maxHits / 3)
+        if (_hitCount == _maxHits / 3)
         {
+            PlayRandomPinataSound();
             _pinataFirstExplosion.SetActive(true);
             _pinataIdle.SetActive(false);
             _pinataOpen.SetActive(true);
             _pinataHit.SetActive(false);
         }
-        if (_hitCount > 2 * _maxHits / 3 && _hitCount < _maxHits)
+        if (_hitCount == 2 * _maxHits / 3)
         {
+            PlayRandomPinataSound();
             _pinataSecondExplosion.SetActive(true);
             _pinataIdle.SetActive(false);
             _pinataOpen.SetActive(false);
             _pinataHit.SetActive(true);
 
         }
-        if (_hitCount >= _maxHits)
+        if (_hitCount == _maxHits)
         {
+            PlayPinataFinishedSound();
             _pinataIdle.SetActive(false);
             _pinataOpen.SetActive(false);
             _pinataHit.SetActive(false);
@@ -126,6 +128,24 @@ public class Pinata2D : MonoBehaviour
 
         }
         _hitCount++;
+    }
+    private void PlayRandomHitSound()
+    {
+        var RandomHitSound = UnityEngine.Random.Range(0, _hitSfx.Count);
+        _source.clip = _hitSfx[RandomHitSound];
+        _source.Play();
+    }
+
+    private void PlayRandomPinataSound()
+    {
+        var RandomHitSound = UnityEngine.Random.Range(0, _pinataSfx.Count);
+        _source.clip = _pinataSfx[RandomHitSound];
+        _source.Play();
+    }
+
+    private void PlayPinataFinishedSound()
+    {
+        // TODO : Add finshing sounds
     }
 
     private IEnumerator HitScaleDown()

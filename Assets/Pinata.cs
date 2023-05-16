@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MarchingBytes;
 using UnityEngine;
 
+
 public class Pinata : MonoBehaviour
 {
     [Header("Configurations")]
@@ -20,7 +21,7 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private Vector3 _targetSize;
     [SerializeField]
-    private float _maxHits;
+    private int _maxHits;
     [Header("References")]
     [SerializeField]
     private Rigidbody _pinataRB;
@@ -84,6 +85,7 @@ public class Pinata : MonoBehaviour
 
     private void OnHit(Vector3 point, Vector3 origPoint)
     {
+        PlayRandomHitSound();
         origPoint.z = origPoint.z - .001f;
         _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
         _randomRotation = UnityEngine.Random.Range(0, _rotations.Count);
@@ -97,14 +99,17 @@ public class Pinata : MonoBehaviour
             StartCoroutine(HitScaleDown());
         }
 
-        if (_hitCount > _maxHits / 3)
+        if ((int)_hitCount == _maxHits / 3)
         {
+            PlayRandomPinataSound();
         }
-        if (_hitCount > 2 * _maxHits / 3)
+        if ((int)_hitCount == 2 * _maxHits / 3)
         {
+            PlayRandomPinataSound();
         }
-        if (_hitCount == _maxHits)
+        if ((int)_hitCount == _maxHits)
         {
+            PlayPinataFinishedSound();
             _pinataMeshRendrer.enabled = false;
             _pinataFragmentsParent.SetActive(true);
             _pinataExplosion.SetActive(true);
@@ -115,6 +120,24 @@ public class Pinata : MonoBehaviour
             StartCoroutine(OnPinataExploded(3));
         }
         _hitCount++;
+    }
+
+    private void PlayRandomHitSound()
+    {
+        var RandomHitSound = UnityEngine.Random.Range(0, _hitSfx.Count);
+        _source.clip = _hitSfx[RandomHitSound];
+        _source.Play();
+    }
+
+    private void PlayRandomPinataSound()
+    {
+        var RandomHitSound = UnityEngine.Random.Range(0, _pinataSfx.Count);
+        _source.clip = _pinataSfx[RandomHitSound];
+        _source.Play();
+    }
+
+    private void PlayPinataFinishedSound()
+    {
     }
 
     private IEnumerator HitScaleDown()
