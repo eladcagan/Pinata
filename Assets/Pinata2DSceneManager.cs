@@ -22,7 +22,8 @@ public class Pinata2DSceneManager : MonoBehaviour
 
     public void PlayAgain()
     {
-      
+        _pinataInstance.gameObject.SetActive(false);
+        DestroyPinata();
         CreatePinata();
     }
 
@@ -35,9 +36,9 @@ public class Pinata2DSceneManager : MonoBehaviour
 
     private void OnPinataExploaded()
     {
-        _pinataInstance.gameObject.SetActive(false);
-        DestroyPinata();
+        
         _playAgainButton.SetActive(true);
+
     }
 
     private void DestroyPinata()

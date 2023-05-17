@@ -273,10 +273,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: 61.5
+    m_UpperAngle: 121.3
 --- !u!1 &1262476382243178113
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,8 +525,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 60
-    m_UpperAngle: -60
+    m_LowerAngle: 35.6
+    m_UpperAngle: 138.97
 --- !u!1 &1262476382414170584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3013846643403117166, guid: 7c0c80e87c209164b97e0a7c46e5eaac, type: 3}
       propertyPath: _hitDirectionMultiplayer
-      value: 25
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013846643403117167, guid: 7c0c80e87c209164b97e0a7c46e5eaac, type: 3}
+      propertyPath: m_Mass
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4416404759800676134, guid: 7c0c80e87c209164b97e0a7c46e5eaac, type: 3}
       propertyPath: m_LocalPosition.z
