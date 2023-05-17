@@ -649,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolInfo:
   - poolName: PinataHitPool
-    prefab: {fileID: 700582750469260271, guid: c8e6a6a39ded277489450040e460f464, type: 3}
+    prefab: {fileID: 8299092672830994027, guid: cb856f3a4021ad84abe99a00c10580a1, type: 3}
     poolSize: 10
     fixedSize: 0
 --- !u!1 &1262476382839523792

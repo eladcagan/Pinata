@@ -179,12 +179,19 @@ public class Pinata2D : MonoBehaviour
         }
         currentPinataTransform.localScale = initialScale;
         _isScaling = false;
-        Destroy(_hitPS);
+        StartCoroutine(PinataHitDelay(2f));
+        
     }
 
     private IEnumerator OnPinataExploded(float delayInSecond)
     {
         PinataExploaded.Invoke();
         yield return new WaitForSeconds(delayInSecond);
+    }
+
+    private IEnumerator PinataHitDelay(float delayInSecond)
+    {
+        yield return new WaitForSeconds(delayInSecond);
+        Destroy(_hitPS);
     }
 }
