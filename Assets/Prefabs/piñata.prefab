@@ -194,6 +194,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fa8a925e8d885c4dac0040a23dd09d7, type: 3}
   - {fileID: 8300000, guid: 91924a0077d9301489da80f5ffc0ee36, type: 3}
   - {fileID: 8300000, guid: 11f340f760884864eadca558cc189b6a, type: 3}
+  _pinataFinishedSfx:
+  - {fileID: 8300000, guid: 65cd55cdfc367364183270b4fd8d953e, type: 3}
+  - {fileID: 8300000, guid: ba17206fed477074b8393cf4e1b66ce0, type: 3}
+  - {fileID: 8300000, guid: b84470229d7457141be552d6a5ccb943, type: 3}
   _intro: {fileID: 0}
   _source: {fileID: 833586416093948383}
 --- !u!82 &833586416093948383

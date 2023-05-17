@@ -44,6 +44,8 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private List<AudioClip> _pinataSfx;
     [SerializeField]
+    private List<AudioClip> _pinataFinishedSfx;
+    [SerializeField]
     private AudioClip _intro;
     [SerializeField]
     private AudioSource _source;
@@ -136,8 +138,12 @@ public class Pinata : MonoBehaviour
         _source.Play();
     }
 
+
     private void PlayPinataFinishedSound()
     {
+        var RandomHitSound = UnityEngine.Random.Range(0, _pinataFinishedSfx.Count);
+        _source.clip = _pinataFinishedSfx[RandomHitSound];
+        _source.Play();
     }
 
     private IEnumerator HitScaleDown()
