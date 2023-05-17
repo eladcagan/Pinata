@@ -18,6 +18,8 @@ public class Pinata2D : MonoBehaviour
     [SerializeField]
     private Vector3 _targetSize;
     [SerializeField]
+    private float _pinataExplodedDelay;
+    [SerializeField]
     private float _explosionForce;
     [Header("References")]
     [SerializeField]
@@ -134,7 +136,7 @@ public class Pinata2D : MonoBehaviour
             }
 
 
-            StartCoroutine(OnPinataExploded(3));
+            StartCoroutine(OnPinataExploded(_pinataExplodedDelay));
 
         }
         _hitCount++;

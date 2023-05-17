@@ -17,7 +17,9 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private float _hitDirectionMultiplayer;
     [SerializeField]
-    private float _scaleDuration;
+    private float _scaleDuration; 
+    [SerializeField]
+    private float _pinataExplodedDelay;
     [SerializeField]
     private Vector3 _targetSize;
     [SerializeField]
@@ -125,7 +127,7 @@ public class Pinata : MonoBehaviour
             {
                 rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
             }
-            StartCoroutine(OnPinataExploded(3));
+            StartCoroutine(OnPinataExploded(_pinataExplodedDelay));
         }
         _hitCount++;
     }

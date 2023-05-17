@@ -344,7 +344,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0.47000003}
+  m_ConnectedAnchor: {x: 0, y: -2.73}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &3013846643403117166
@@ -363,7 +363,8 @@ MonoBehaviour:
   _maxHits: 10
   _scaleDuration: 0.1
   _targetSize: {x: 0.95, y: 0.95, z: 1}
-  _explosionForce: 1000
+  _pinataExplodedDelay: 2
+  _explosionForce: 500
   _pinataRB: {fileID: 3013846643403117167}
   _pinataIdle: {fileID: 3013846643321647006}
   _pinataHit: {fileID: 3013846643894028865}
