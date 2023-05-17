@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 1262476382103920883}
   - component: {fileID: 1262476382103920882}
   - component: {fileID: 1262476382103920845}
+  - component: {fileID: 3516115282285757616}
   m_Layer: 0
   m_Name: pinata rope
   m_TagString: Untagged
@@ -200,6 +201,27 @@ MonoBehaviour:
     m_Extent: {x: 0.05000025, y: 1.1740057, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
+--- !u!50 &3516115282285757616
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262476382103920880}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1262476382136409210
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +285,7 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 3516115282285757616}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
