@@ -54,6 +54,7 @@ public class Pinata2D : MonoBehaviour
 
     private int _hitCount;
     private bool _isScaling;
+    private bool _pinataExploded;
     private int _randomRotation;
     private GameObject _hitPS;
 
@@ -71,6 +72,10 @@ public class Pinata2D : MonoBehaviour
     }
     private void OnHit(Vector3 point, Vector3 origPoint)
     {
+        if(_pinataExploded)
+        {
+            return;
+        }
         origPoint.z = origPoint.x - 1f;
         PlayRandomHitSound();
         _hitPS = EasyObjectPool.instance.GetObjectFromPool("PinataHitPool", origPoint, Quaternion.identity);
@@ -185,8 +190,10 @@ public class Pinata2D : MonoBehaviour
 
     private IEnumerator OnPinataExploded(float delayInSecond)
     {
-        PinataExploaded.Invoke();
+        _pinataExploded = true;
+        _conffetiRain.SetActive(false);
         yield return new WaitForSeconds(delayInSecond);
+        PinataExploaded.Invoke();
     }
 
     private IEnumerator PinataHitDelay(float delayInSecond)
