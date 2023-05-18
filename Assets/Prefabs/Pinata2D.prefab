@@ -1501,6 +1501,10 @@ PrefabInstance:
       propertyPath: _hitDirectionMultiplayer
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3013846643403117166, guid: 7c0c80e87c209164b97e0a7c46e5eaac, type: 3}
+      propertyPath: _intro
+      value: 
+      objectReference: {fileID: 8300000, guid: 88cffb7337fc48c4f8f14c00368a739d, type: 3}
     - target: {fileID: 3013846643403117167, guid: 7c0c80e87c209164b97e0a7c46e5eaac, type: 3}
       propertyPath: m_Mass
       value: 70

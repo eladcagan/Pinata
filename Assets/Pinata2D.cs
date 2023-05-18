@@ -61,6 +61,12 @@ public class Pinata2D : MonoBehaviour
     private GameObject _hitPS;
 
 
+    private void Start()
+    {
+        _source.clip = _intro;
+        _source.Play();
+    }
+
     private void OnMouseDown()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

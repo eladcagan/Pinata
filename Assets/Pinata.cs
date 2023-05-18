@@ -64,6 +64,11 @@ public class Pinata : MonoBehaviour
     private int _randomRotation;
     private GameObject _hitPS;
 
+    private void Start()
+    {
+        _source.clip = _intro;
+        _source.Play();
+    }
 
     // Update is called once per frame
     void Update()
