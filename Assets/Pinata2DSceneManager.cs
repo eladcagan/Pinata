@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Pinata2DSceneManager : MonoBehaviour
 {
+
+    private const int _mainMenuScene = 0;
+
     [SerializeField]
     private GameObject _pinataPrefab;
     [SerializeField]
     private Transform _pinataParent;
     [SerializeField]
     private GameObject _playAgainButton;
-
 
     private Pinata2D _pinataInstance;
     private GameObject _pinata;
@@ -25,6 +27,11 @@ public class Pinata2DSceneManager : MonoBehaviour
         _pinataInstance.gameObject.SetActive(false);
         DestroyPinata();
         CreatePinata();
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(_mainMenuScene);
     }
 
     private void CreatePinata()

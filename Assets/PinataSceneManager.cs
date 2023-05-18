@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PinataSceneManager : MonoBehaviour
 {
+
+    private const int _mainMenuScene = 0;
+
     [SerializeField]
     private GameObject _pinataPrefab;
     [SerializeField]
@@ -11,7 +13,7 @@ public class PinataSceneManager : MonoBehaviour
     [SerializeField]
     private GameObject _playAgainButton;
 
-
+    
     private Pinata _pinataInstance;
     private GameObject _pinata;
     // Start is called before the first frame update
@@ -25,6 +27,11 @@ public class PinataSceneManager : MonoBehaviour
         _pinataInstance.gameObject.SetActive(false);
         DestroyPinata();
         CreatePinata();
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(_mainMenuScene);
     }
 
     private void CreatePinata()
