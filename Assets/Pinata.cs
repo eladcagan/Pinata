@@ -38,6 +38,8 @@ public class Pinata : MonoBehaviour
     [SerializeField]
     private GameObject _pinataExplosion;
     [SerializeField]
+    private GameObject _pinataFinalExplosion;
+    [SerializeField]
     private List<Vector3> _rotations;
     [SerializeField]
     private Transform _pinataTransform;
@@ -111,10 +113,14 @@ public class Pinata : MonoBehaviour
 
         if ((int)_hitCount == _maxHits / 3)
         {
+            _pinataExplosion.SetActive(true);
+            StartCoroutine(TogglePinataExplosion());
             PlayRandomPinataSound();
         }
         if ((int)_hitCount == 2 * _maxHits / 3)
         {
+            _pinataExplosion.SetActive(true);
+            StartCoroutine(TogglePinataExplosion());
             PlayRandomPinataSound();
         }
         if ((int)_hitCount == _maxHits)
@@ -122,7 +128,7 @@ public class Pinata : MonoBehaviour
             PlayPinataFinishedSound();
             _pinataMeshRendrer.enabled = false;
             _pinataFragmentsParent.SetActive(true);
-            _pinataExplosion.SetActive(true);
+            _pinataFinalExplosion.SetActive(true);
             foreach (Rigidbody rb in _pinataFragments)
             {
                 rb.AddExplosionForce(_explosionForce, _pinataTransform.position, _explosionRadius);
@@ -168,6 +174,12 @@ public class Pinata : MonoBehaviour
         transform.localScale = initialScale;
         _isScaling = false;
         Destroy(_hitPS);
+    }
+
+    private IEnumerator TogglePinataExplosion()
+    {
+        yield return new WaitForSeconds(1f);
+        _pinataExplosion.SetActive(false);
     }
 
     private IEnumerator OnPinataExploded(float delayInSecond)
